@@ -23,7 +23,11 @@ class MainApp extends ConsumerWidget {
     final theme = ref.watch(appThemeControllerProvider);
 
     return MaterialApp.router(
-      routerConfig: GoRouter,
+      routerConfig: GoRouter(
+        routes: [
+          // Add your routes here
+        ],
+      ),
       darkTheme: AppTheme(fontFamily: _fontFamily(locale.value)).dark,
       theme: AppTheme(fontFamily: _fontFamily(locale.value)).light,
       themeMode: theme.value,
