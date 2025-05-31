@@ -1,0 +1,14 @@
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/splash.png
+  android:fullscreen: true
+  ios: true
+  web: true
+  android_gravity: center
+  ios_content_mode: scaleAspectFill
+  web_image: assets/images/splash.png
+  web_background_color: "#ffffff"
+  android_scale_type: centerCrop
+  ios_scale_type: centerCrop
+  android_image_size: cover
+  ios_image_size: cover

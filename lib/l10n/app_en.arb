@@ -1,0 +1,19 @@
+{
+    "@@locale": "en",
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "devname": "Sean Paul Shamia",
+    "workdesc": "Mobile App Developer",
+    "mobileAppDeveloperDesc": "Passionate about creating innovative and user-friendly mobile applications",
+    "downloadCV": "Download CV",
+    "poweredByFlutter": "Powered by Flutter",
+    "experiences": "Experiences",
+    "projectsDescription": "KasaPay is a mobile app that allows users to send and receive money easily and securely. The app is designed to be user-friendly and intuitive, making it easy for anyone to use. With Kasapay, users can send money to friends and family, pay bills, and make purchases online. The app also includes features such as transaction history, account management, and customer support.",
+    "experienceDescription": " I am currently working on store app for Kasapay and there mobile App and as Customer support, I do test runs and ensure the Remitcore System works efficiently, I am proficient in Flutter, Dart, and Java.",
+    "testimonies": "Testimonies",
+    "testimoniesDescription": "What others say about my work",
+    "contactPageTitle": "Get in Touch",
+    "contactPageDescription": "Feel free to reach out to me for any questions, collaborations, or opportunities. I'm always excited to connect with fellow developers and potential clients.These are my contact details: +254 795 684 258 or email me at seanzuri12@gmail.com"
+}
