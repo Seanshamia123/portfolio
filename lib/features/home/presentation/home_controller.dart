@@ -1,5 +1,5 @@
-import 'package:portfolio/features/experiences%20/data/domain/experience.dart';
-import 'package:portfolio/features/experiences%20/data/remote_experiences_repository.dart';
+import 'package:portfolio/features/experiences/data/domain/experience.dart';
+import 'package:portfolio/features/experiences/data/remote_experiences_repository.dart';
 import 'package:portfolio/features/home/data/remote_testimony_repository.dart';
 import 'package:portfolio/features/home/domain/testimony.dart';
 import 'package:portfolio/features/project/data/remote_project_repository.dart';

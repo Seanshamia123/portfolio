@@ -14,7 +14,7 @@ class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context, ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(homeControllerProvider);
     return AppScaffold(
       slivers: [
@@ -24,7 +24,7 @@ class HomePage extends ConsumerWidget {
           SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: context.insets.padding),
-              child: HeroWidget(),
+              child: const HeroWidget(),
             ),
           ),
           SliverGap(context.insets.gap),
