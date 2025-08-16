@@ -25,7 +25,13 @@ class MainApp extends ConsumerWidget {
     return MaterialApp.router(
       routerConfig: GoRouter(
         routes: [
-          // Add your routes here
+          GoRoute(
+            path: '/',
+            builder: (context, state) => const Scaffold(
+              body: Center(child: Text('Home Page')),
+            ),
+          ),
+          // Add more routes here as needed
         ],
       ),
       darkTheme: AppTheme(fontFamily: _fontFamily(locale.value)).dark,
