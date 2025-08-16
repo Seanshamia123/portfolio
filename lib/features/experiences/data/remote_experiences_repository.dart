@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:portfolio/features/experiences%20/data/domain/experience.dart';
-import 'package:portfolio/features/experiences%20/data/experiences_repository.dart';
+import 'package:portfolio/features/experiences/data/domain/experience.dart';
+import 'package:portfolio/features/experiences/data/experiences_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'remote_experiences_repository.g.dart';
 

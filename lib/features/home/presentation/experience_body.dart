@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:portfolio/extensions.dart';
-import 'package:portfolio/features/experiences%20/data/domain/experience.dart';
+import 'package:portfolio/features/experiences/data/domain/experience.dart';
 import 'package:portfolio/shared/app_locale_controller.dart';
 import 'package:portfolio/widgets/appbar/styled_card.dart';
 import 'package:portfolio/widgets/home_title_subtitle.dart';

@@ -17,12 +17,17 @@ class TestimonyItem extends StatelessWidget {
           Row(
             children: [
               SizedBox(
-                width: 40,
-                height: 40,
-                child: CircleAvatar(
-                  backgroundImage: Image.network(testimony.avatar).image,
+                  width: 40,
+                  height: 40,
+                  child: ClipOval(
+                    child: Image.network(
+                      testimony.avatar,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.person),
+                    ),
+                  ),
                 ),
-              ),
               const Gap(16),
               Expanded(
                 child: Text(

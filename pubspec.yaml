@@ -18,7 +18,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_localizations:
     sdk: flutter
-  intl: any
+  intl: ^0.20.2
   flutter_svg: ^2.1.0
   gap: ^3.0.1
   riverpod_annotation: ^2.6.1
@@ -55,8 +55,3 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/images/me.jpeg
-
-dependency_overrides:
-  _fe_analyzer_shared: ^82.0.0
-  analyzer: ^7.4.5
-  vector_math: ^2.2.0
