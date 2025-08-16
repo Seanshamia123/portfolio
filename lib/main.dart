@@ -4,13 +4,10 @@ import 'package:portfolio/shared/app_locale_controller.dart';
 import 'package:portfolio/shared/app_theme_controller.dart';
 import 'package:portfolio/style/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:go_router/go_router.dart';
-import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const ProviderScope(child: MainApp()));
 }
 

@@ -1,28 +1,32 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:portfolio/features/experiences/data/domain/experience.dart';
 import 'package:portfolio/features/experiences/data/experiences_repository.dart';
+import 'package:portfolio/shared/api_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:dio/dio.dart';
+
 part 'remote_experiences_repository.g.dart';
 
 class RemoteExperiencesRepository extends ExperiencesRepository {
-  final FirebaseFirestore db;
-  RemoteExperiencesRepository({required this.db});
+  final ApiClient _api;
+  RemoteExperiencesRepository({ApiClient? api}) : _api = api ?? ApiClient();
 
   @override
   Future<List<Experience>> getExperiences() async {
-    final experiences = await db
-        .collection('experiences')
-        .orderBy('date', descending: true)
-        .get(const GetOptions(source: Source.serverAndCache));
-    return experiences.docs.map((e) => Experience.fromDoc(e)).toList();
+    try {
+      final res = await _api.dio.get('/api/experiences');
+      final data = (res.data as List).cast<Map<String, dynamic>>();
+      return data.map(Experience.fromJson).toList();
+    } on DioException catch (e) {
+      throw Exception(
+          'Failed to load experiences: ${e.response?.data ?? e.message}');
+    }
   }
 }
 
 @Riverpod(keepAlive: true)
 RemoteExperiencesRepository experiencesRepository(
-  ExperiencesRepositoryRef ref,
-) {
-  return RemoteExperiencesRepository(db: FirebaseFirestore.instance);
+    ExperiencesRepositoryRef ref) {
+  return RemoteExperiencesRepository();
 }
 
 @Riverpod(keepAlive: true)
