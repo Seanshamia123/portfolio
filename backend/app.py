@@ -1,13 +1,14 @@
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from models import db
+from models import db 
 from config import Config
 from dotenv import load_dotenv
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 
-def create_app():
+
+def create_app(config_name=None):
     load_dotenv()
     app = Flask(__name__)
     app.config.from_object(Config)
@@ -22,7 +23,7 @@ def create_app():
         return {"status": "ok"}
 
     # register blueprints here...
-    from routes import auth, projects, experiences, testimonies, contact
+    from apis import auth, projects, experiences, testimonies, contact
     app.register_blueprint(auth.bp)
     app.register_blueprint(projects.bp)
     app.register_blueprint(experiences.bp)
