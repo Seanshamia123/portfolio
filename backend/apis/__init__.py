@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask_restx import Api
-from .contact import api as contact_ns
+from .contact import api as contactmessage_ns
 from .experiences import api as experiences_ns
 from .projects import api as projects_ns
 from .testimonies import api as testimonies_ns
@@ -37,6 +37,6 @@ api.add_namespace(auth_ns, path='/auth')
 api.add_namespace(projects_ns, path='/projects')
 api.add_namespace(experiences_ns, path='/experiences')
 api.add_namespace(testimonies_ns, path='/testimonies')
-api.add_namespace(contact_ns, path='/contact')
+api.add_namespace(contactmessage_ns, path='/contact')
 
 __all__ = ['api_bp']

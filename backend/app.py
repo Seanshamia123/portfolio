@@ -1,7 +1,8 @@
 from flask import Flask
-from flask_migrate import Migrate
+from flask_migrate import Migrate, migrate
 from flask_sqlalchemy import SQLAlchemy
-from models import db 
+from .models import db 
+from .apis import auth, projects, experiences, testimonies, contact
 from config import Config
 from dotenv import load_dotenv
 from flask_cors import CORS
@@ -18,12 +19,15 @@ def create_app(config_name=None):
     Migrate(app, db)   # <-- this line registers "flask db" commands
     JWTManager(app)
 
+     # Initialize extensions
+    db.init_app(app)
+    migrate.init_app(app, db)
+
     @app.get("/api/health")
     def health():
         return {"status": "ok"}
 
     # register blueprints here...
-    from apis import auth, projects, experiences, testimonies, contact
     app.register_blueprint(auth.bp)
     app.register_blueprint(projects.bp)
     app.register_blueprint(experiences.bp)
@@ -32,4 +36,5 @@ def create_app(config_name=None):
 
     return app
 
-app = create_app()
+if __name__ == '__main__':
+    app = create_app()

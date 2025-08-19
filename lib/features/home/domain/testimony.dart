@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'testimony.freezed.dart';
@@ -15,6 +14,4 @@ class Testimony with _$Testimony {
   }) = _Testimony;
   factory Testimony.fromJson(Map<String, dynamic> json) =>
       _$TestimonyFromJson(json);
-  factory Testimony.fromDoc(QueryDocumentSnapshot<Map<String, dynamic>> doc) =>
-      Testimony.fromJson(doc.data()).copyWith(id: doc.id);
 }
