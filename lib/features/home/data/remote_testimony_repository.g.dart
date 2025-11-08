@@ -7,7 +7,7 @@ part of 'remote_testimony_repository.dart';
 // **************************************************************************
 
 String _$testimonyRepositoryHash() =>
-    r'5164c71ae156885f7e8b7105a5d9d2c401e4ee00';
+    r'4ef4e221c065cd729b52d0e5b787ae7e2f01c8ab';
 
 /// See also [testimonyRepository].
 @ProviderFor(testimonyRepository)
@@ -25,7 +25,7 @@ final testimonyRepositoryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef TestimonyRepositoryRef = ProviderRef<RemoteTestimonyRepository>;
-String _$getTestimoniesHash() => r'3b6f46dd275e9f78a50dd866ea4587bd6009286e';
+String _$getTestimoniesHash() => r'e79997405c526cc99cdbd4467770b7e2dd911cd9';
 
 /// See also [getTestimonies].
 @ProviderFor(getTestimonies)

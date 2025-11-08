@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 import 'package:portfolio/extensions.dart';
 import 'package:portfolio/style/app_size.dart';
 import 'package:portfolio/widgets/seo_text.dart';
-import 'package:seo_renderer/renderers/text_renderer/text_renderer_style.dart';
 
 class HeroTexts extends StatelessWidget {
   const HeroTexts({super.key});

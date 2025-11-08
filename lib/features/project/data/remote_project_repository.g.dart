@@ -7,7 +7,7 @@ part of 'remote_project_repository.dart';
 // **************************************************************************
 
 String _$projectsRepositoryHash() =>
-    r'c63361db7c2c7f40cf3b26315491e4938cd96d4d';
+    r'b022ed7a2ce45bab2b1d1f870b21e5b533bd81ff';
 
 /// See also [projectsRepository].
 @ProviderFor(projectsRepository)
@@ -24,7 +24,7 @@ final projectsRepositoryProvider = Provider<RemoteProjectRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef ProjectsRepositoryRef = ProviderRef<RemoteProjectRepository>;
-String _$getProjectsHash() => r'3ee2308aff28b9017cbdf6c5d16123a03066e44f';
+String _$getProjectsHash() => r'3f237e50e91b8ad8fc38c8b3750ddb85815cf381';
 
 /// See also [getProjects].
 @ProviderFor(getProjects)

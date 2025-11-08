@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:seo_renderer/renderers/text_renderer/text_renderer_style.dart';
+
+enum TextRendererStyle { header1, header2, header3, header4, paragraph }
 
 class SEOText extends StatelessWidget {
   const SEOText(

@@ -1,11 +1,8 @@
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.dialects.mysql import JSON as MYSQL_JSON  # MySQL JSON type
-# If you're using Postgres or SQLite, you can switch to db.JSON directly.
+from database import db
 
-db = SQLAlchemy()
 
-class ContactMessage(db.Models):
+class ContactMessage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(160), nullable=False)
     email = db.Column(db.String(160), nullable=False)

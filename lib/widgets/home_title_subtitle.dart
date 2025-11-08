@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/extensions.dart';
 import 'package:portfolio/widgets/seo_text.dart';
-import 'package:seo_renderer/seo_renderer.dart';
 
 class HomeTitleSubtitle extends StatelessWidget {
   const HomeTitleSubtitle({

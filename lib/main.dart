@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:portfolio/shared/app_locale_controller.dart';
 import 'package:portfolio/shared/app_theme_controller.dart';
 import 'package:portfolio/style/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:go_router/go_router.dart';
+import 'package:portfolio/routes/app_route.dart';
+import 'package:portfolio/l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,21 +22,17 @@ class MainApp extends ConsumerWidget {
     final theme = ref.watch(appThemeControllerProvider);
 
     return MaterialApp.router(
-      routerConfig: GoRouter(
-        routes: [
-          GoRoute(
-            path: '/',
-            builder: (context, state) => const Scaffold(
-              body: Center(child: Text('Home Page')),
-            ),
-          ),
-          // Add more routes here as needed
-        ],
-      ),
+      routerConfig: AppRoute.router,
       darkTheme: AppTheme(fontFamily: _fontFamily(locale.value)).dark,
       theme: AppTheme(fontFamily: _fontFamily(locale.value)).light,
       themeMode: theme.value,
-      supportedLocales: const [Locale('en'), Locale('es'), Locale('de')],
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       locale: Locale(locale.value ?? 'en'),
     );
   }

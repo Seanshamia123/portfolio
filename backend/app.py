@@ -1,8 +1,7 @@
 from flask import Flask
-from flask_migrate import Migrate, migrate
-from flask_sqlalchemy import SQLAlchemy
-from .models import db 
-from .apis import auth, projects, experiences, testimonies, contact
+from flask_migrate import Migrate
+from models import db
+from apis import auth, projects, experiences, testimonies, contact
 from config import Config
 from dotenv import load_dotenv
 from flask_cors import CORS
@@ -15,13 +14,10 @@ def create_app(config_name=None):
     app.config.from_object(Config)
 
     CORS(app)
+    # Initialize extensions
     db.init_app(app)
-    Migrate(app, db)   # <-- this line registers "flask db" commands
+    Migrate(app, db)
     JWTManager(app)
-
-     # Initialize extensions
-    db.init_app(app)
-    migrate.init_app(app, db)
 
     @app.get("/api/health")
     def health():

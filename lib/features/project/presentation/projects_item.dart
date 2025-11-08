@@ -5,7 +5,6 @@ import 'package:portfolio/extensions.dart';
 import 'package:portfolio/features/project/domain/project.dart';
 import 'package:portfolio/widgets/appbar/styled_card.dart';
 import 'package:portfolio/widgets/seo_text.dart';
-import 'package:seo_renderer/renderers/text_renderer/text_renderer_style.dart';
 import 'package:portfolio/shared/app_locale_controller.dart';
 
 class ProjectItem extends ConsumerWidget {
