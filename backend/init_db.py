@@ -88,25 +88,28 @@ def init_database():
             db.session.add_all(experiences)
             print(f"✓ Added {len(experiences)} sample experiences")
 
-            # Add sample testimonies
+            # Add sample testimonies (approved by default)
             testimonies = [
                 Testimony(
                     name="John Doe",
                     text="Excellent work on our project! Highly recommended.",
                     link="https://linkedin.com/in/johndoe",
-                    avatar="https://i.pravatar.cc/150?img=1"
+                    avatar="https://i.pravatar.cc/150?img=1",
+                    status="approved"
                 ),
                 Testimony(
                     name="Jane Smith",
                     text="Professional, skilled, and delivers on time. Great experience working together!",
                     link="https://linkedin.com/in/janesmith",
-                    avatar="https://i.pravatar.cc/150?img=2"
+                    avatar="https://i.pravatar.cc/150?img=2",
+                    status="approved"
                 ),
                 Testimony(
                     name="Mike Johnson",
                     text="Outstanding developer with great communication skills.",
                     link="https://linkedin.com/in/mikejohnson",
-                    avatar="https://i.pravatar.cc/150?img=3"
+                    avatar="https://i.pravatar.cc/150?img=3",
+                    status="approved"
                 )
             ]
             db.session.add_all(testimonies)

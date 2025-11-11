@@ -21,6 +21,26 @@ class RemoteTestimonyRepository extends TestimonyRepository {
           'Failed to load testimonies: ${e.response?.data ?? e.message}');
     }
   }
+
+  @override
+  Future<void> submitReview({
+    required String name,
+    required String text,
+    String? email,
+    String? link,
+  }) async {
+    try {
+      await _api.dio.post('/api/testimonies/submit', data: {
+        'name': name,
+        'text': text,
+        if (email != null && email.isNotEmpty) 'email': email,
+        if (link != null && link.isNotEmpty) 'link': link,
+      });
+    } on DioException catch (e) {
+      final errorMsg = e.response?.data?['error'] ?? e.message;
+      throw Exception('Failed to submit review: $errorMsg');
+    }
+  }
 }
 
 @Riverpod(keepAlive: true)

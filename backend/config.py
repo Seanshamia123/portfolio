@@ -7,6 +7,10 @@ class Config:
 
     _database_url = os.getenv("DATABASE_URL")
 
+    # Render.com uses postgres:// but SQLAlchemy needs postgresql://
+    if _database_url and _database_url.startswith("postgres://"):
+        _database_url = _database_url.replace("postgres://", "postgresql://", 1)
+
     if not _database_url:
         mysql_user = os.getenv("MYSQL_USER")
         mysql_password = os.getenv("MYSQL_PASSWORD")

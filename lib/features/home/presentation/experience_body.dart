@@ -163,29 +163,51 @@ class ExperienceItem extends ConsumerWidget {
   final Experience experience;
 
   @override
-  Widget build(BuildContext context, ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final locale = ref.watch(applocaleControllerProvider).value ?? 'en';
+    final descriptionLines = experience.description[locale]
+            ?.split('\n')
+            .map((line) => line.trim())
+            .where((line) => line.isNotEmpty)
+            .toList() ??
+        [];
+
     return StyledCard(
       width: expWidth,
       height: expHeight,
       borderEffect: true,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            experience.title[ref.read(applocaleControllerProvider).value] ?? '',
+            experience.title[locale] ?? '',
             style: context.textStyle.titleLgBold.copyWith(
               color: context.colorscheme.onSurface,
+              fontSize: context.isDesktop ? 20 : 18,
             ),
           ),
-          Expanded(
-            child: Column(
-              children: (experience.description[
-                          ref.read(applocaleControllerProvider).value ?? '']
-                      ?.split('\n')
-                      .map((e) => _ExprienceDecriptionItem(description: e))
-                      .toList()) ??
-                  [],
+          if (descriptionLines.isNotEmpty) ...[
+            const Gap(12),
+            Expanded(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    for (var i = 0; i < descriptionLines.length; i++)
+                      Padding(
+                        padding: EdgeInsets.only(
+                          bottom: i == descriptionLines.length - 1 ? 0 : 8,
+                        ),
+                        child: _ExprienceDecriptionItem(
+                          description: descriptionLines[i],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
             ),
-          ),
+          ] else
+            const Spacer(),
         ],
       ),
     );
@@ -213,8 +235,10 @@ class _ExprienceDecriptionItem extends StatelessWidget {
           child: Text(
             description,
             style: context.textStyle.bodyMdMedium.copyWith(
-              color: context.colorscheme.onSurface,
+              color: context.colorscheme.onSurfaceVariant,
               fontWeight: FontWeight.w400,
+              fontSize: context.isDesktop ? 14 : 13,
+              height: 1.45,
             ),
           ),
         ),

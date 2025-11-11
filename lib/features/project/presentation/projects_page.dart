@@ -15,25 +15,45 @@ class ProjectsPage extends ConsumerWidget {
       slivers: [
         if (projects.isLoading)
           const SliverToBoxAdapter(
-            child: CircularProgressIndicator(),
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(48.0),
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          )
+        else if (projects.hasError)
+          SliverToBoxAdapter(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(48.0),
+                child: Text('Error loading projects: ${projects.error}'),
+              ),
+            ),
+          )
+        else if (projects.value?.isEmpty ?? true)
+          const SliverToBoxAdapter(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(48.0),
+                child: Text('No projects available'),
+              ),
+            ),
           )
         else
           SliverPadding(
             padding: EdgeInsets.all(context.insets.padding),
             sliver: SliverGrid.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: context.mq.size.width ~/ 300 >= 3
-                    ? 3
-                    : context.mq.size.width ~/ 300,
-                crossAxisSpacing: 24,
-                mainAxisSpacing: 24,
-                childAspectRatio: 0.8,
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 460,
+                crossAxisSpacing: 32,
+                mainAxisSpacing: 32,
+                childAspectRatio: 0.68, // Increased vertical space
               ),
               itemBuilder: (context, index) {
                 return ProjectItem(project: projects.value![index]);
               },
-              itemCount: projects
-                  .value!.length, // Adjust the number of items as needed
+              itemCount: projects.value!.length,
             ),
           ),
       ],

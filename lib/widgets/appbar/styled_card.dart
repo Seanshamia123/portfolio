@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:portfolio/extensions.dart';
 import 'package:url_launcher/link.dart';
@@ -13,6 +12,11 @@ class StyledCard extends StatefulWidget {
     required this.child,
     this.borderEffect = false,
     this.link,
+    this.backgroundGradient,
+    this.backgroundColor,
+    this.borderWidth = 1,
+    this.borderColor,
+    this.boxShadow,
   });
   final double? width;
   final double? height;
@@ -21,6 +25,11 @@ class StyledCard extends StatefulWidget {
   final Widget child;
   final bool borderEffect;
   final String? link;
+  final Gradient? backgroundGradient;
+  final Color? backgroundColor;
+  final double borderWidth;
+  final Color? borderColor;
+  final List<BoxShadow>? boxShadow;
 
   @override
   State<StyledCard> createState() => _StyledCardState();
@@ -35,36 +44,54 @@ class _StyledCardState extends State<StyledCard> {
         builder: (context, FollowLink) {
           return InkWell(
             onTap: FollowLink,
-            child: Stack(
-              children: [
-                if (widget.borderEffect) ...[
-                  const _BorderShadow(),
-                  const Positioned(bottom: 0, right: 0, child: _BorderShadow()),
-                ],
-                Container(
-                  width: widget.width,
-                  height: widget.height,
-                  padding: widget.padding ??
-                      EdgeInsets.all(context.insets.cardpadding),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: context.colorscheme.outline),
-                    color: context.colorscheme.surface,
-                    borderRadius: widget.borderRadius ??
-                        const BorderRadius.all(Radius.circular(24)),
-                  ),
-                  child: widget.child,
-                ),
-                if (widget.borderEffect) ...[
-                  CustomPaint(
-                    size: Size(widget.width ?? 0, widget.height ?? 0),
-                    painter:
-                        CurveLinePainter(color: context.colorscheme.primary),
-                  ),
-                ],
-              ],
-            ),
+            borderRadius: widget.borderRadius ??
+                const BorderRadius.all(Radius.circular(24)),
+            child: _CardBody(card: widget),
           );
         });
+  }
+}
+
+class _CardBody extends StatelessWidget {
+  const _CardBody({required this.card});
+
+  final StyledCard card;
+
+  @override
+  Widget build(BuildContext context) {
+    final borderRadius =
+        card.borderRadius ?? const BorderRadius.all(Radius.circular(24));
+    final backgroundGradient = card.backgroundGradient;
+    final backgroundColor = card.backgroundColor ?? context.colorscheme.surface;
+    final borderColor = card.borderColor ?? context.colorscheme.outline;
+
+    return Stack(
+      children: [
+        if (card.borderEffect) ...[
+          const _BorderShadow(),
+          const Positioned(bottom: 0, right: 0, child: _BorderShadow()),
+        ],
+        Container(
+          width: card.width,
+          height: card.height,
+          padding: card.padding ?? EdgeInsets.all(context.insets.cardpadding),
+          decoration: BoxDecoration(
+            border: Border.all(color: borderColor, width: card.borderWidth),
+            color: backgroundGradient == null ? backgroundColor : null,
+            gradient: backgroundGradient,
+            borderRadius: borderRadius,
+            boxShadow: card.boxShadow,
+          ),
+          child: card.child,
+        ),
+        if (card.borderEffect) ...[
+          CustomPaint(
+            size: Size(card.width ?? 0, card.height ?? 0),
+            painter: CurveLinePainter(color: context.colorscheme.primary),
+          ),
+        ],
+      ],
+    );
   }
 }
 

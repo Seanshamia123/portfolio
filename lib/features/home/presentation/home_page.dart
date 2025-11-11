@@ -7,6 +7,7 @@ import 'package:portfolio/features/home/presentation/hero_widget.dart';
 import 'package:portfolio/features/home/presentation/home_controller.dart';
 import 'package:portfolio/features/home/presentation/home_project_list.dart';
 import 'package:portfolio/features/home/presentation/testimoni_list.dart';
+import 'package:portfolio/features/home/presentation/review_submission_form.dart';
 import 'package:portfolio/widgets/app_scaffold.dart';
 import 'package:portfolio/widgets/home_title_subtitle.dart';
 
@@ -83,6 +84,14 @@ class HomePage extends ConsumerWidget {
             padding: EdgeInsets.symmetric(horizontal: context.insets.padding),
             sliver: TestimoniList(testimonies: home.testimonies),
           ),
+          const SliverGap(48),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: context.insets.padding),
+            sliver: const SliverToBoxAdapter(
+              child: ReviewSubmissionForm(),
+            ),
+          ),
+          const SliverGap(48),
         ],
       ),
     );
